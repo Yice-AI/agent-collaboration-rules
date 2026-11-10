@@ -1,0 +1,22 @@
+name: 规则与工具校验
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python3 -B -m unittest discover -s tests -q
+      - run: python3 -B scripts/privacy_check.py
+      - name: 校验发布包
+        run: |
+          VERSION=$(python3 -c 'import json; print(json.load(open("release.json"))["version"])')
+          DIGEST=$(python3 -c 'import json; print(json.load(open("release.json"))["bundle_sha256"])')
+          python3 -B scripts/build_bundle.py build --root . --allowlist bundle-paths.txt --version "$VERSION" --out _private/release/bundle.json
+          python3 -B scripts/build_bundle.py verify --input _private/release/bundle.json --expected-sha256 "$DIGEST"

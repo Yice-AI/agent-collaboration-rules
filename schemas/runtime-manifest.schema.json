@@ -1,0 +1,304 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/schemas/runtime-manifest.schema.json",
+  "title": "Private agent runtime manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "release",
+    "resources"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "type": "integer"
+    },
+    "test_mode": {
+      "type": "boolean"
+    },
+    "release": {
+      "type": "object",
+      "required": [
+        "repository_url",
+        "commit",
+        "version",
+        "bundle_sha256",
+        "fallback_document_id"
+      ],
+      "properties": {
+        "repository_url": {
+          "type": "string",
+          "pattern": "^https://github\\.com/[A-Za-z0-9][A-Za-z0-9-]*/[A-Za-z0-9_.-]+$"
+        },
+        "commit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,79}$"
+        },
+        "bundle_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "fallback_document_id": {
+          "type": "string",
+          "minLength": 10,
+          "pattern": "^[A-Za-z0-9_-]+$",
+          "maxLength": 200
+        }
+      },
+      "additionalProperties": false
+    },
+    "resources": {
+      "type": "object",
+      "required": [
+        "baseline",
+        "ledger_head",
+        "ledger_folder",
+        "ledger_pending_folder",
+        "work_log",
+        "preferences",
+        "project_context",
+        "holdings_sheet"
+      ],
+      "properties": {
+        "baseline": {
+          "type": "object",
+          "required": [
+            "type",
+            "file_id",
+            "sha256"
+          ],
+          "properties": {
+            "type": {
+              "const": "file"
+            },
+            "file_id": {
+              "type": "string",
+              "minLength": 10,
+              "pattern": "^[A-Za-z0-9_-]+$",
+              "maxLength": 200
+            },
+            "parent_folder_id": {
+              "type": "string",
+              "minLength": 10,
+              "pattern": "^[A-Za-z0-9_-]+$",
+              "maxLength": 200
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          "additionalProperties": true
+        },
+        "ledger_head": {
+          "type": "object",
+          "required": [
+            "type",
+            "file_id"
+          ],
+          "properties": {
+            "type": {
+              "const": "document"
+            },
+            "file_id": {
+              "type": "string",
+              "minLength": 10,
+              "pattern": "^[A-Za-z0-9_-]+$",
+              "maxLength": 200
+            },
+            "parent_folder_id": {
+              "type": "string",
+              "minLength": 10,
+              "pattern": "^[A-Za-z0-9_-]+$",
+              "maxLength": 200
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          "additionalProperties": true
+        },
+        "ledger_folder": {
+          "type": "object",
+          "required": [
+            "type",
+            "file_id"
+          ],
+          "properties": {
+            "type": {
+              "const": "folder"
+            },
+            "file_id": {
+              "type": "string",
+              "minLength": 10,
+              "pattern": "^[A-Za-z0-9_-]+$",
+              "maxLength": 200
+            },
+            "parent_folder_id": {
+              "type": "string",
+              "minLength": 10,
+              "pattern": "^[A-Za-z0-9_-]+$",
+              "maxLength": 200
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          "additionalProperties": true
+        },
+        "ledger_pending_folder": {
+          "type": "object",
+          "required": [
+            "type",
+            "file_id"
+          ],
+          "properties": {
+            "type": {
+              "const": "folder"
+            },
+            "file_id": {
+              "type": "string",
+              "minLength": 10,
+              "pattern": "^[A-Za-z0-9_-]+$",
+              "maxLength": 200
+            },
+            "parent_folder_id": {
+              "type": "string",
+              "minLength": 10,
+              "pattern": "^[A-Za-z0-9_-]+$",
+              "maxLength": 200
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          "additionalProperties": true
+        },
+        "work_log": {
+          "type": "object",
+          "required": [
+            "type",
+            "file_id",
+            "parent_folder_id"
+          ],
+          "properties": {
+            "type": {
+              "const": "document"
+            },
+            "file_id": {
+              "type": "string",
+              "minLength": 10,
+              "pattern": "^[A-Za-z0-9_-]+$",
+              "maxLength": 200
+            },
+            "parent_folder_id": {
+              "type": "string",
+              "minLength": 10,
+              "pattern": "^[A-Za-z0-9_-]+$",
+              "maxLength": 200
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          "additionalProperties": true
+        },
+        "preferences": {
+          "type": "object",
+          "required": [
+            "type",
+            "file_id"
+          ],
+          "properties": {
+            "type": {
+              "const": "document"
+            },
+            "file_id": {
+              "type": "string",
+              "minLength": 10,
+              "pattern": "^[A-Za-z0-9_-]+$",
+              "maxLength": 200
+            },
+            "parent_folder_id": {
+              "type": "string",
+              "minLength": 10,
+              "pattern": "^[A-Za-z0-9_-]+$",
+              "maxLength": 200
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          "additionalProperties": true
+        },
+        "project_context": {
+          "type": "object",
+          "required": [
+            "type",
+            "file_id"
+          ],
+          "properties": {
+            "type": {
+              "const": "document"
+            },
+            "file_id": {
+              "type": "string",
+              "minLength": 10,
+              "pattern": "^[A-Za-z0-9_-]+$",
+              "maxLength": 200
+            },
+            "parent_folder_id": {
+              "type": "string",
+              "minLength": 10,
+              "pattern": "^[A-Za-z0-9_-]+$",
+              "maxLength": 200
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          "additionalProperties": true
+        },
+        "holdings_sheet": {
+          "type": "object",
+          "required": [
+            "type",
+            "spreadsheet_id"
+          ],
+          "properties": {
+            "type": {
+              "const": "spreadsheet"
+            },
+            "spreadsheet_id": {
+              "type": "string",
+              "minLength": 10,
+              "pattern": "^[A-Za-z0-9_-]+$",
+              "maxLength": 200
+            },
+            "parent_folder_id": {
+              "type": "string",
+              "minLength": 10,
+              "pattern": "^[A-Za-z0-9_-]+$",
+              "maxLength": 200
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,23 @@
+# 私有输入、候选记录、生成发布包和本机配置不得进入公开仓库
+/_private/
+/private/
+/secrets/
+/.serena/
+/dist/
+.env
+.env.*
+__pycache__/
+*.py[cod]
+.DS_Store
+*.pem
+*.key
+*.p12
+*.pfx
+*.xlsx
+*.xls
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.heic
+*.zip

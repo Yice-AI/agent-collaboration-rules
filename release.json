@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "version": "1.0.0",
+  "bundle_sha256": "91c843a60dd97e370f280cf382714005bcb3da51277fffb5a05211c9da8fc09d",
+  "bundle_file_count": 17,
+  "bundle_format": "single-line UTF-8 JSON; no trailing LF",
+  "allowlist": "bundle-paths.txt"
+}

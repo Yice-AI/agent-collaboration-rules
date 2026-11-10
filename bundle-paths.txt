@@ -1,0 +1,17 @@
+AGENTS.md
+README.md
+docs/入口与版本.md
+docs/平台验收.md
+docs/持仓同步.md
+docs/确认记录规范.md
+docs/近期记录规范.md
+docs/隐私与发布.md
+schemas/runtime-manifest.schema.json
+scripts/build_bundle.py
+scripts/cloud_ledger.py
+scripts/confirmed_ledger.py
+scripts/privacy_check.py
+scripts/runtime_manifest.py
+scripts/work_context.py
+templates/平台启动指令.md
+templates/待保存摘要.md
