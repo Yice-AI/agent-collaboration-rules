@@ -1,5 +1,7 @@
 AGENTS.md
 README.md
+SKILL.md
+docs/协作接续.md
 docs/入口与版本.md
 docs/平台验收.md
 docs/持仓同步.md
