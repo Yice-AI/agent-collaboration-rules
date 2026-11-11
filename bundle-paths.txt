@@ -4,6 +4,7 @@ docs/入口与版本.md
 docs/平台验收.md
 docs/持仓同步.md
 docs/写入范围保护.md
+docs/原生快照传递.md
 docs/确认记录规范.md
 docs/近期记录规范.md
 docs/隐私与发布.md
